@@ -1,9 +1,16 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Provide a more detailed explanation of a specific section of the document using ConversationalRetrievalChain.
+Use the langchain library to add intelligence to your chatbot so it can retrieve accurate information while holding a conversation.
 
 ### Response:
 ```python
-qa("Tell me more about the history of machine learning.")
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import ConversationalRetrievalChain
+
+llm = ChatOpenAI()
+retriever = vectorstore.as_retriever()
+qa = ConversationalRetrievalChain.from_llm(llm, retriever=retriever, memory=memory)
+qa("How do agents use Task decomposition?")
 ```
+---

@@ -1,9 +1,46 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Set up a ChatOpenAI model with temperature 0.5 and model_name "gpt-3.5-turbo".
+Using the Python langchain library, summarize a list of documents using the 'map_reduce' method with a character text splitter.
 
 ### Response:
+
 ```python
-llm = ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo")
+!pip install openai tiktoken chromadb
+
+from langchain.chat_models import ChatOpenAI
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.chains import ReduceDocumentsChain, MapReduceDocumentsChain
+
+# Load Documents
+loader = WebBaseLoader("https://your_blog_URL")
+docs = loader.load()
+
+# Map
+llm = ChatOpenAI(temperature=0)
+document_var = "docs"
+map_template = f"""The following is a set of documents
+{{{document_var}}}
+Based on this list of docs, please identify the main themes
+Helpful Answer:"""
+map_prompt = PromptTemplate.from_template(map_template)
+map_chain = LLMChain(llm=llm, prompt=map_prompt)
+
+#Reduce
+reduce_template = f"""The following is a set of summaries:
+{{{document_var}}}
+Take these and distill it into a final, consolidated summary of the main themes.
+Helpful Answer:"""
+reduce_prompt = PromptTemplate.from_template(reduce_template)
+reduce_chain = LLMChain(llm=llm, prompt=reduce_prompt)
+    
+#Combine
+map_reduce_chain = MapReduceDocumentsChain(map_chain, reduce_chain, document_var)
+
+text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=1000, chunk_overlap=0)
+split_docs = text_splitter.split_documents(docs)
+
+summary = map_reduce_chain.run(split_docs)
+print(summary)
 ```
+---

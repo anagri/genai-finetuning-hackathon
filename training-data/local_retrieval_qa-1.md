@@ -1,17 +1,13 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Load and split an example document using given URL from the Internet.
+Using the python langchain library, download the embeddings locally and initialize `Chroma` from these documents.
 
 ### Response:
 ```python
-from langchain.document_loaders import WebBaseLoader
+from langchain.vectorstores import Chroma
+from langchain.embeddings import GPT4AllEmbeddings
 
-loader = WebBaseLoader("https://en.wikipedia.org/wiki/Natural_language_processing")
-data = loader.load()
-
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
-all_splits = text_splitter.split_documents(data)
+vectorstore = Chroma.from_documents(documents=all_splits, embedding=GPT4AllEmbeddings())
 ```
+---

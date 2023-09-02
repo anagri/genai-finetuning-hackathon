@@ -1,25 +1,21 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Set up the model with correct parameters as per documentation.
+Using the python langchain library and the previously initialized GPT4All LLM, run a LLMChain operation using a PromptTemplate and retrieve documents.
 
 ### Response:
 ```python
-from langchain.llms import LlamaCpp
-from langchain.callbacks.manager import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain import PromptTemplate, LLMChain
 
-n_gpu_layers = 1  # Follow the guidelines in the document. 
-n_batch = 256  # Adjust these values based on your system resources.
-callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-
-llm = LlamaCpp(
-    model_path="/path/to/your/model/file",
-    n_gpu_layers=n_gpu_layers,
-    n_batch=n_batch,
-    n_ctx=2048,
-    f16_kv=True,
-    callback_manager=callback_manager,
-    verbose=True,
+prompt = PromptTemplate.from_template(
+    "What are the main concepts in the retrieved document: {docs}"
 )
+llm_chain = LLMChain(llm=llm, prompt=prompt)
+
+question = "Discuss Deep Learning architectures"
+docs = vectorstore.similarity_search(question)
+result = llm_chain(docs)
+
+result["text"]
 ```
+---

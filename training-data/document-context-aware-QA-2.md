@@ -1,16 +1,29 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Perform text splitting on the subsection grouped documents, with a chunk size of 300 and no chunk overlap, using langchain.
+Using the python langchain library, initialise a SelfQueryRetriever that can filter based on the metadata of the document.
 
 ### Response:
 ```python
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+# Import required dependencies
+from langchain.llms import OpenAI
+from langchain.retrievers.self_query.base import SelfQueryRetriever
+from langchain.chains.query_constructor.base import AttributeInfo
 
-chunk_size = 300
-chunk_overlap = 0
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=chunk_size, chunk_overlap=chunk_overlap
+# Define the metadata for the retriever
+metadata_field_info = [
+    AttributeInfo(
+        name="Section",
+        description="Part of the document that the text comes from",
+        type="string or list[string]",
+    ),
+]
+document_content_description = "Major sections of the document"
+
+# Initialise the retriever
+llm = OpenAI(temperature=0)
+retriever = SelfQueryRetriever.from_llm(
+    llm, vectorstore, document_content_description, metadata_field_info, verbose=True
 )
-subsection_splits = text_splitter.split_documents(md_subsection_splits)
 ```
+---

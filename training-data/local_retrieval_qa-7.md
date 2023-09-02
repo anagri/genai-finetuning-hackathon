@@ -1,25 +1,18 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Use the LLMChain with a custom prompt and get the response.
+Using the python langchain library, run a RetrievalQA operation with a custom prompt.
 
 ### Response:
 ```python
-from langchain import PromptTemplate, LLMChain
+from langchain.chains import RetrievalQA
 
-# Prompt
-prompt = PromptTemplate.from_template(
-    "Summarize the key points from the documents I fetched: {docs}"
+qa_chain = RetrievalQA.from_chain_type(
+    llm,
+    retriever=vectorstore.as_retriever(),
+    chain_type_kwargs={"prompt": QA_CHAIN_PROMPT},
 )
 
-# Chain
-llm_chain = LLMChain(llm=llm, prompt=prompt)
-
-# Run
-question = "What is the current state of Natural language processing?"
-docs = vectorstore.similarity_search(question)
-result = llm_chain(docs)
-
-# Output
-result["text"]
+qa_chain({"query": question})
 ```
+---

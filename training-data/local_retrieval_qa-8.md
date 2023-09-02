@@ -1,21 +1,13 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Create and run a QA chain.
+Using the python langchain library, create a vectorstore instance with documents for similarity search.
 
 ### Response:
 ```python
-from langchain.chains.question_answering import load_qa_chain
-from langchain.chains import RetrievalQA
+from langchain.vectorstores import MatrixStore
+from langchain.embeddings import HNSWeddings
 
-QA_CHAIN_PROMPT = PromptTemplate(
-    input_variables=["context", "question"],
-    template= template,
-)
-
-# Chain
-chain = load_qa_chain(llm, chain_type="stuff", prompt=QA_CHAIN_PROMPT)
-
-# Run
-chain({"input_documents": docs, "question": question}, return_only_outputs=True)
+vectorstore = MatrixStore.from_documents(documents=all_splits, embedding=HNSWeddings())
 ```
+---

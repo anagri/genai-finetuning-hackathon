@@ -1,13 +1,15 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Create an instance of ConversationChain and translate "I love programming" from English to French and then to German.
+Setup a memory system using ConversationBufferMemory from the langchain library for your chatbot.
 
 ### Response:
 ```python
-from langchain.chains import ConversationChain 
+from langchain.memory import ConversationBufferMemory
 
-conversation = ConversationChain(llm=chat)
-conversation.run("Translate this sentence from English to French: I love programming.")
-conversation.run("Translate it to German.")
+memory = ConversationBufferMemory()
+memory.chat_memory.add_user_message("hi!")
+memory.chat_memory.add_ai_message("whats up?")
+memory.load_memory_variables({})
 ```
+---

@@ -1,24 +1,23 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
-### Task 1: Analyze the use case and understand the workings of langchain library
-
-The langchain library provides tools for interacting with Large Language Models (LLMs) and is especially useful to handle long texts and documents. The use case provided explains how to summarize documents using this library. It offers three main approaches:
-
-- `Stuff`: This method involves putting all documents into a single prompt and passing it to the LLM for summarization.
- 
-- `Map-reduce`: This method involves summarizing each document individually and then combining those summaries into a final summary.
-
-- `Refine`: This method involves looping over the input documents and iteratively updating its answer.
-
-Langchain allows customization of these processes by changing LLMs, prompts, and templates. It's helpful for managing large texts within the constraints of the token limits on the LLMs.
-
-### Task 2: Prompt samples
-
 ### Instruction:
-Load the url "https://example.com/post" using WebBaseLoader.
+Using the Python langchain library, download a blog post from a given URL and use the library to summarize the blog post using the 'stuff' method.
 
 ### Response:
 ```python
-loader = WebBaseLoader("https://example.com/post")
+!pip install openai tiktoken chromadb
+
+from langchain.chat_models import ChatOpenAI
+from langchain.document_loaders import WebBaseLoader
+from langchain.chains.summarize import load_summarize_chain
+
+loader = WebBaseLoader("https://your_blog_URL")
 docs = loader.load()
+
+llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k")
+chain = load_summarize_chain(llm, chain_type="stuff")
+
+summary = chain.run(docs)
+print(summary)
 ```
+---

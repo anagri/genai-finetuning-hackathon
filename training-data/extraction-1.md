@@ -1,23 +1,33 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Expand the schema to differentiate between different types of movies such as action, romance etc.
+Using the python langchain library, create an extraction model that extracts different parts from a user query related to a short story, specifically the conflicted character, setting, and resolution of the conflict.
 
 ### Response:
 ```python
+import os
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import create_extraction_chain
+
+# Set API Key
+os.environ["OPENAI_API_KEY"] = 'your-openai-key'
+
+# Schema
 schema = {
     "properties": {
-        "action_movie_name": {"type": "string"},
-        "action_director": {"type": "string"},
-        "romance_movie_name": {"type": "string"},
-        "romance_director": {"type": "string"},
+        "conflicted_character": {"type": "string"},
+        "setting": {"type": "string"},
+        "resolution": {"type": "string"},
     },
-    "required": [],
+    "required": ["conflicted_character", "setting", "resolution"]
 }
 
+# Input 
+inp = """In a small village in England, John, a kind-hearted farmer was always in conflict with his greed. One day, he found a treasure in his field. He donated all his wealth to the village and lived happily ever after."""
+
+# Run chain
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
 chain = create_extraction_chain(schema, llm)
-
-inp = "The action movie Mission Impossible was directed by Brian De Palma. The Notebook, a romance movie was directed by Nick Cassavetes."
-
 chain.run(inp)
 ```
+---

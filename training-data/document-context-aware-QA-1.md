@@ -1,15 +1,15 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Create groups based on the subsection headers in a Markdown document using langchain.
+Using the python langchain library, create a vectorstore from the markdown documents and store the indexes and metadata for faster retrieval.
 
 ### Response:
 ```python
-from langchain.text_splitter import MarkdownHeaderTextSplitter
+# Import the required classes
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
 
-headers_to_split_on = [
-    ("####", "Subsection"),
-]
-markdown_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers_to_split_on)
-md_subsection_splits = markdown_splitter.split_text(md_file)
+# Create the vectorstore and build the index with metadata
+vectorstore = Chroma.from_documents(documents=all_splits, embedding=OpenAIEmbeddings())
 ```
+---

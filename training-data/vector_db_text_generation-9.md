@@ -1,20 +1,15 @@
 Below is an instruction that describes a task. Write a response that appropriately completes the request.
 
 ### Instruction:
-Modify the template prompt to generate a condensed review about a specific topic, and then use it to produce a review on "Python Generators".
+Using the langchain library, fetch a certain topic from the vector index and generate a document using the retrieved documents as context.
 
 ### Response:
 ```python
-prompt_template = """Using the context below, write a concise review about the topic below:
-    Context: {context}
-    Topic: {topic}
-    Review Body:"""
-    
-PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "topic"])
+def generate_document(topic):
+    docs = search_index.similarity_search(topic, k=3)
+    inputs = [{"context": doc.page_content, "topic": topic} for doc in docs]
+    return chain.apply(inputs)
 
-llm = OpenAI(temperature=0.5)
-
-chain = LLMChain(llm=llm, prompt=PROMPT)
-
-generate_blog_post("Python Generators")
+generate_document("socket programming")
 ```
+---
