@@ -5,6 +5,9 @@ openai
 sentencepiece
 wandb
 gradio==3.9
-deepspeed==0.10.0
+deepspeed==0.9.2
 accelerate
 tensorboardX
+rouge_score
+datasets
+huggingface_hub
