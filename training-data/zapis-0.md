@@ -1,0 +1,1 @@
+Sure, here are the 10 sample prompts based on the use case:
