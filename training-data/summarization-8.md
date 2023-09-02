@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Execute a "refine" type summarization chain using the ChatOpenAI model.
 

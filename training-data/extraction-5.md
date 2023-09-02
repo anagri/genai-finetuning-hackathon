@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Create a Pydantic class for a single joke with 'setup' and 'punchline', then use the langchain library to parse the joke.
 

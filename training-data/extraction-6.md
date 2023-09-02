@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Use the langchain library to extract specific attributes of a book, such as the book title, author, and number of pages.
 

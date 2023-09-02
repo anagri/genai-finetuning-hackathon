@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Reset the vector database and perform data operations for a new set of document chunks from a different Langchain GitHub repository.
 

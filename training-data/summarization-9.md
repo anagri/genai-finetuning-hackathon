@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Customize and execute the "refine" type summarization chain.
 

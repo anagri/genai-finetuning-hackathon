@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Create a MapReduceDocumentsChain with a customized LLMChain.
 

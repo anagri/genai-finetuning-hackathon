@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Instantiate the Large Language Model with the desired temperature and a specific model detail referring to the "langchain" library.
 

@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction: 
 Perform a similarity search using the local embeddings and a sample query.
 

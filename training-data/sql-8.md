@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Initialize Elasticsearch python client and populate your database with some sample customers data.
 

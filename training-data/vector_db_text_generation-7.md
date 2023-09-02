@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Using the Langchain library, generate a custom prompt and setup the Language Model Chain to generate text pertaining to the topic of "Python Exception Handling".
 

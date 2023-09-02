@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Using the Langchain vector store, perform a similarity search for content related to the topic of "Object-Oriented Programming".
 

@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Set up a Language Model Chain with a custom prompt to generate articles about programming.
 

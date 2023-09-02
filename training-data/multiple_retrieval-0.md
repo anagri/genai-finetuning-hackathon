@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Retrieve specified data simultaneously from a MongoDB database and a local JSON file using LangChain, then combine the retrieved results to form a response.
 

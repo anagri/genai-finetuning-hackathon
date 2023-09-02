@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Enhance your schema by defining possible values (enum), a description, and required properties for each of the properties: aggressiveness and language.
 

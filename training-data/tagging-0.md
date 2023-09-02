@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Install the 'langchain' and 'openai' libraries and create an instance of a large language model for interaction, setting temperature to 0. 
 

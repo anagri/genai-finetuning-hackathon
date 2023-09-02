@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Let's learn how to retrieve specific data from a PostgreSQL database and Elasticsearch index using LangChain, then combine the data for answering a query.
 

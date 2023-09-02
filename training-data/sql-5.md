@@ -1,3 +1,5 @@
+Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
 ### Instruction:
 Create and run a SQL query using SQLDatabaseChain, for the question "What is the total sales amount?"
 
